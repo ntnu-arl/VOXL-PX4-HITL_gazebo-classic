@@ -19,7 +19,7 @@
 #include <string>
 #include <opencv2/opencv.hpp>
 //#include <development/mavlink.h>
-#include "../mavlink/generated/include/mavlink/v2.0/common/mavlink.h"
+#include "../mavlink-libs/generated/include/mavlink/v2.0/common/mavlink.h"
 #include <gazebo/common/Plugin.hh>
 #include <gazebo/sensors/CameraSensor.hh>
 #include <gazebo/gazebo.hh>

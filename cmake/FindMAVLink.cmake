@@ -57,7 +57,7 @@ find_path(_MAVLINK_INCLUDE_DIR
 find_path(_MAVLINK_INCLUDE_DIR
    NAMES mavlink/v2.0/mavlink_types.h
    PATH_SUFFIXES include
-   PATHS mavlink/generated
+   PATHS mavlink-libs/generated
    )
 
 # read the version

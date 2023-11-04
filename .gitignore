@@ -1,3 +1,5 @@
+mavlink-libs/
+
 Build/
 build/
 scripts/schemas
