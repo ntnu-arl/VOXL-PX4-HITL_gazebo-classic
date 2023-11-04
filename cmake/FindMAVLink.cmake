@@ -54,6 +54,12 @@ find_path(_MAVLINK_INCLUDE_DIR
    PATHS /opt/ros/${ROS_DISTRO}/
    )
 
+find_path(_MAVLINK_INCLUDE_DIR
+   NAMES mavlink/v2.0/mavlink_types.h
+   PATH_SUFFIXES include
+   PATHS mavlink/generated
+   )
+
 # read the version
 if (EXISTS ${_MAVLINK_INCLUDE_DIR}/mavlink/config.h)
     file(READ ${_MAVLINK_INCLUDE_DIR}/mavlink/config.h MAVLINK_CONFIG_FILE)
