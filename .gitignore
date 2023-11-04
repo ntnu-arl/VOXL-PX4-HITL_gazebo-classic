@@ -4,7 +4,6 @@ scripts/schemas
 .DS_Store
 *~
 
-mavlink/
 models/iris/*.sdf
 *.pyc
 .*.sw?
