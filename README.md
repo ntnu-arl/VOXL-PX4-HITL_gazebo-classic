@@ -1,3 +1,25 @@
+# Instructions for ModalAI VOXL2 HITL PX4 Gazebo Plugin Suite
+
+## Setup the environment
+
+* git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
+* cd voxl2_hitl_gazebo
+* git checkout voxl-dev
+* git submodule update --init --recursive
+
+## Create the docker image for the build
+
+* ./build-docker-image.bash
+
+## Build in the Docker container
+
+* ./run-docker-image.bash
+
+In the docker container:
+
+* ./build-mavlink.bash
+* ./build-gazebo.bash
+
 # PX4 Gazebo Plugin Suite for MAVLink SITL and HITL
 
 [![Build Status](https://github.com/PX4/sitl_gazebo/workflows/Build%20Tests/badge.svg)](https://github.com/PX4/sitl_gazebo/actions?query=workflow%3A%22Build+Tests%22) [![MacOS Build Tests](https://github.com/PX4/sitl_gazebo/workflows/MacOS%20Build%20Tests/badge.svg)](https://github.com/PX4/sitl_gazebo/actions?query=workflow%3A%22MacOS+Build+Tests%22) 
