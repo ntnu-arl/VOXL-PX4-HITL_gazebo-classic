@@ -11,7 +11,7 @@
 
 * ./build-docker-image.bash
 
-## Build in the Docker container
+## Build gazebo in the Docker container
 
 * ./run-docker-image.bash
 
@@ -19,6 +19,14 @@ In the docker container:
 
 * ./build-mavlink.bash
 * ./build-gazebo.bash
+
+## Run gazebo in the Docker container
+
+* ./run-docker-image.bash
+
+In the docker container:
+
+* ./run_gazebo.bash
 
 # PX4 Gazebo Plugin Suite for MAVLink SITL and HITL
 
