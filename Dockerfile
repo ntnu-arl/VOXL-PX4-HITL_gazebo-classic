@@ -15,11 +15,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     python3-pip \
     libopencv-dev \
     libgstreamer-plugins-base1.0-dev \
-    gnupg2
+    gnupg2 \
+    ninja-build
 
 COPY mavlink/pymavlink/requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 RUN rm requirements.txt
+RUN pip3 install Jinja2
+RUN pip3 install numpy
 
 RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable \
     `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'

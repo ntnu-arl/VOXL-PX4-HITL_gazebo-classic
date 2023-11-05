@@ -7,11 +7,11 @@
 * git checkout voxl-dev
 * git submodule update --init --recursive
 
-## Create the docker image for the build
+## Create a docker image for the build
 
 * ./build-docker-image.bash
 
-## Build gazebo in the Docker container
+## Build and run gazebo in the Docker container
 
 * ./run-docker-image.bash
 
@@ -19,13 +19,6 @@ In the docker container:
 
 * ./build-mavlink.bash
 * ./build-gazebo.bash
-
-## Run gazebo in the Docker container
-
-* ./run-docker-image.bash
-
-In the docker container:
-
 * ./run_gazebo.bash
 
 # PX4 Gazebo Plugin Suite for MAVLink SITL and HITL
