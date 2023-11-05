@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build voxl-gazebo-docker:v1.0 .
+docker build -t voxl-gazebo-docker:v1.0 .
 
