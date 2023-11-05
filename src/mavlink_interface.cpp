@@ -743,7 +743,7 @@ void MavlinkInterface::parse_serial_buffer(const boost::system::error_code& err,
 
     if (msg_received != Framing::incomplete) {
       if (hil_mode_) {
-        forward_mavlink_message(&message);
+        // forward_mavlink_message(&message);
       }
       handle_message(&message);
     }

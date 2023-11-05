@@ -9,7 +9,7 @@
     </plugin>
 
     <include>
-      <uri>model://iris</uri>
+      <uri>model://iris_hitl</uri>
     </include>
 
   </model>
