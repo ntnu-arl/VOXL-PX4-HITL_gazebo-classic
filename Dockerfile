@@ -18,9 +18,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gnupg2 \
     ninja-build
 
-COPY mavlink/pymavlink/requirements.txt .
-RUN python3 -m pip install -r requirements.txt
-RUN rm requirements.txt
+WORKDIR /usr/workspace
+
+RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
+
+WORKDIR /usr/workspace/voxl2_hitl_gazebo
+
+RUN git checkout voxl-dev
+RUN git submodule update --init --recursive
+
+RUN python3 -m pip install -r mavlink/pymavlink/requirements.txt
 RUN pip3 install Jinja2
 RUN pip3 install numpy
 
@@ -37,5 +44,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gazebo11 \
     libgazebo11-dev
 
-WORKDIR /usr/workspace
+RUN mkdir -p /usr/workspace/mavlink-libs
+
+WORKDIR /usr/workspace/mavlink
+python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/generated/include/mavlink/v2.0 message_definitions/v1.0/common.xml
+python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/development message_definitions/v1.0/development.xml
+
+WORKDIR /usr/workspace/build
+cmake ..
+make
 
