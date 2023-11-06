@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gnupg2 \
     ninja-build
 
-WORKDIR /usr/workspace/voxl2_hitl_gazebo
+WORKDIR /usr/workspace
 
 RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
 
