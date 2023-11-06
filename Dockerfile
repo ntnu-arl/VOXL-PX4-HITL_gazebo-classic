@@ -44,13 +44,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gazebo11 \
     libgazebo11-dev
 
-RUN mkdir -p /usr/workspace/mavlink-libs
+RUN mkdir -p /usr/workspace/voxl2_hitl_gazebo/mavlink-libs
 
-WORKDIR /usr/workspace/mavlink
+WORKDIR /usr/workspace/voxl2_hitl_gazebo/mavlink
 RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/generated/include/mavlink/v2.0 message_definitions/v1.0/common.xml
 RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/development message_definitions/v1.0/development.xml
 
-WORKDIR /usr/workspace/build
+WORKDIR /usr/workspace/voxl2_hitl_gazebo/build
 RUN cmake ..
 RUN make
 
