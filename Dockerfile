@@ -22,7 +22,7 @@ WORKDIR /usr/workspace
 
 RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
 
-RUN cd voxl2_hitl_gazebo
+RUN cd /usr/workspace/voxl2_hitl_gazebo
 RUN git checkout voxl-dev
 RUN git submodule update --init --recursive
 
