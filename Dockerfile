@@ -22,8 +22,7 @@ WORKDIR /usr/workspace
 
 RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
 
-WORKDIR /usr/workspace/voxl2_hitl_gazebo
-
+RUN cd voxl2_hitl_gazebo
 RUN git checkout voxl-dev
 RUN git submodule update --init --recursive
 
@@ -44,9 +43,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gazebo11 \
     libgazebo11-dev
 
-RUN mkdir -p /usr/workspace/voxl2_hitl_gazebo/mavlink-libs
+RUN mkdir -p mavlink-libs
 
-WORKDIR /usr/workspace/voxl2_hitl_gazebo/mavlink
+RUN cd mavlink
 RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/generated/include/mavlink/v2.0 message_definitions/v1.0/common.xml
 RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/development message_definitions/v1.0/development.xml
 
