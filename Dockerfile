@@ -20,7 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
 
-RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git 
+RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
 
 RUN git checkout voxl-dev
 RUN git submodule update --init --recursive
