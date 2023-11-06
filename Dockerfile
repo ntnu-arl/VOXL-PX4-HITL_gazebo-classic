@@ -54,3 +54,6 @@ WORKDIR /usr/workspace/voxl2_hitl_gazebo/build
 RUN cmake ..
 RUN make
 
+WORKDIR /usr/workspace/voxl2_hitl_gazebo
+
+
