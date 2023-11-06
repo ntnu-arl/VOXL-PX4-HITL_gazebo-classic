@@ -47,10 +47,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
 RUN mkdir -p /usr/workspace/mavlink-libs
 
 WORKDIR /usr/workspace/mavlink
-python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/generated/include/mavlink/v2.0 message_definitions/v1.0/common.xml
-python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/development message_definitions/v1.0/development.xml
+RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/generated/include/mavlink/v2.0 message_definitions/v1.0/common.xml
+RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../mavlink-libs/development message_definitions/v1.0/development.xml
 
 WORKDIR /usr/workspace/build
-cmake ..
-make
+RUN cmake ..
+RUN make
 
