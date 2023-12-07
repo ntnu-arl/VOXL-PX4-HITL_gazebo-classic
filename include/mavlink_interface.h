@@ -149,7 +149,7 @@ public:
     ~MavlinkInterface();
     void pollForMAVLinkMessages();
     void pollFromQgcAndSdk();
-    void send_mavlink_message(const mavlink_message_t *message);
+    void send_mavlink_message(const mavlink_message_t *message, bool send_udp = false);
     void forward_mavlink_message(const mavlink_message_t *message);
     void open();
     void close();

@@ -86,7 +86,6 @@ void MavlinkInterface::Load()
     });
     open_serial();
 
-  } else {
     memset((char *)&remote_simulator_addr_, 0, sizeof(remote_simulator_addr_));
     remote_simulator_addr_.sin_family = AF_INET;
     remote_simulator_addr_len_ = sizeof(remote_simulator_addr_);
@@ -162,20 +161,20 @@ void MavlinkInterface::Load()
       fds_[LISTEN_FD].events = POLLIN; // only listens for new connections on tcp
 
     } else {
-      if (!hil_mode_) {
-        // When connecting to SITL, we specify the port where the mavlink traffic originates from.
-        remote_simulator_addr_.sin_addr.s_addr = mavlink_addr_;
-        remote_simulator_addr_.sin_port = htons(mavlink_udp_port_);
-        local_simulator_addr_.sin_addr.s_addr = htonl(INADDR_ANY);
-        local_simulator_addr_.sin_port = htons(0);
-      } else {
-        // When connecting to HITL via UDP, the vehicle talks to a specific port that we need to
-        // listen to.
-        remote_simulator_addr_.sin_addr.s_addr = htonl(INADDR_ANY);
-        remote_simulator_addr_.sin_port = htons(0);
-        local_simulator_addr_.sin_addr.s_addr = mavlink_addr_;
-        local_simulator_addr_.sin_port = htons(mavlink_udp_port_);
-      }
+      //if (!hil_mode_) {
+      // When connecting to SITL, we specify the port where the mavlink traffic originates from.
+      remote_simulator_addr_.sin_addr.s_addr = mavlink_addr_;
+      remote_simulator_addr_.sin_port = htons(mavlink_udp_port_);
+      local_simulator_addr_.sin_addr.s_addr = htonl(INADDR_ANY);
+      local_simulator_addr_.sin_port = htons(0);
+      // } else {
+      //   // When connecting to HITL via UDP, the vehicle talks to a specific port that we need to
+      //   // listen to.
+      //   remote_simulator_addr_.sin_addr.s_addr = htonl(INADDR_ANY);
+      //   remote_simulator_addr_.sin_port = htons(0);
+      //   local_simulator_addr_.sin_addr.s_addr = mavlink_addr_;
+      //   local_simulator_addr_.sin_port = htons(mavlink_udp_port_);
+      // }
 
       if ((simulator_socket_fd_ = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         std::cerr << "Creating UDP socket failed: " << strerror(errno) << ", aborting\n";
@@ -198,8 +197,8 @@ void MavlinkInterface::Load()
       fds_[CONNECTION_FD].fd = simulator_socket_fd_;
       fds_[CONNECTION_FD].events = POLLIN;
     }
-  }
   // hil_data_.resize(1);
+  }
 }
 
 void MavlinkInterface::SendSensorMessages(uint64_t time_usec) {
@@ -575,7 +574,7 @@ void MavlinkInterface::forward_mavlink_message(const mavlink_message_t *message)
   }
 }
 
-void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message)
+void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message, bool send_udp)
 {
   assert(message != nullptr);
 
@@ -583,7 +582,7 @@ void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message)
     return;
   }
 
-  if (serial_enabled_) {
+  if (serial_enabled_ && !send_udp) {
 
     if (!is_serial_open()) {
       std::cerr << "Serial port closed! \n";
@@ -603,7 +602,6 @@ void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message)
   } else {
     uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
     int packetlen = mavlink_msg_to_send_buffer(buffer, message);
-
     if (fds_[CONNECTION_FD].fd > 0) {
       ssize_t len;
       if (use_tcp_) {
@@ -621,6 +619,8 @@ void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message)
             }
           }
         }
+      } else {
+        std::cout << "Sent odometry over udp" << std::endl;
       }
     }
   }

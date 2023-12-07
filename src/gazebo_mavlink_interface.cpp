@@ -1099,9 +1099,9 @@ void GazeboMavlinkInterface::VisionCallback(OdomPtr& odom_message) {
         count++;
       }
     }
-
+    
     mavlink_msg_odometry_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &odom);
-    mavlink_interface_->send_mavlink_message(&msg);
+    mavlink_interface_->send_mavlink_message(&msg, true);
   }
   else if (send_vision_estimation_) {
     // send VISION_POSITION_ESTIMATE Mavlink msg
