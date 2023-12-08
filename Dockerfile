@@ -57,5 +57,6 @@ RUN make install
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
 
 COPY ./run_headless.bash .
+COPY ./run_headless_vio.bash .
 
 
