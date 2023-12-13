@@ -110,6 +110,8 @@ void VisionPlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
   _pose_model_start = ignitionFromGazeboMath(_model->GetWorldPose());
 #endif
 
+  gzwarn << "[gazebo_vision_plugin] has start yaw of " << pose_model_world.Rot().Yaw() << "\n";
+
   _nh = transport::NodePtr(new transport::Node());
   _nh->Init(_namespace);
 
@@ -147,7 +149,7 @@ void VisionPlugin::OnUpdate(const common::UpdateInfo&)
     pose_model.Pos().Z() = pose_model_world.Pos().Z() - _pose_model_start.Pos().Z();
     pose_model.Rot().Euler(pose_model_world.Rot().Roll(),
                            pose_model_world.Rot().Pitch(),
-                           pose_model_world.Rot().Yaw());
+                           pose_model_world.Rot().Yaw() - pose_model_world.Rot().Yaw() + 1.6);
 
     // update noise parameters
     ignition::math::Vector3d noise_pos;

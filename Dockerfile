@@ -16,6 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     libopencv-dev \
     libgstreamer-plugins-base1.0-dev \
     gnupg2 \
+    vim \
     ninja-build
 
 WORKDIR /usr/workspace
@@ -51,12 +52,9 @@ RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../m
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo/build
 RUN cmake ..
-RUN make
+RUN make -j4
 RUN make install
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
-
-COPY ./run_headless.bash .
-COPY ./run_headless_vio.bash .
 
 
