@@ -21,6 +21,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
 
 WORKDIR /usr/workspace
 
+ADD https://github.com/modalai/PX4-SITL_gazebo-classic.git /.git-hashref
+
 RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
