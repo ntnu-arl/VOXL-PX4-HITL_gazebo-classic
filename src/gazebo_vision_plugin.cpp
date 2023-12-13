@@ -111,7 +111,7 @@ void VisionPlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
 #endif
 
   gzwarn << "[gazebo_vision_plugin] has start yaw of " << _pose_model_start.Rot().Yaw() << "\n";
-  cout << "[gazebo_vision_plugin] has start yaw of " << _pose_model_start.Rot().Yaw() << "\n";
+  std::cout << "[gazebo_vision_plugin] has start yaw of " << _pose_model_start.Rot().Yaw() << "\n";
 
   _nh = transport::NodePtr(new transport::Node());
   _nh->Init(_namespace);
