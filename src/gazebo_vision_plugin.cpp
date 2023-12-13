@@ -110,7 +110,7 @@ void VisionPlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
   _pose_model_start = ignitionFromGazeboMath(_model->GetWorldPose());
 #endif
 
-  gzwarn << "[gazebo_vision_plugin] has start yaw of " << pose_model_world.Rot().Yaw() << "\n";
+  gzwarn << "[gazebo_vision_plugin] has start yaw of " << _pose_model_start.Rot().Yaw() << "\n";
 
   _nh = transport::NodePtr(new transport::Node());
   _nh->Init(_namespace);
