@@ -52,7 +52,7 @@ RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../m
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo/build
 RUN cmake ..
-RUN make -j4
+RUN make -j2
 RUN make install
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
