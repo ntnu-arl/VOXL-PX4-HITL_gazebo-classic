@@ -161,7 +161,7 @@ void MavlinkInterface::Load()
       fds_[LISTEN_FD].events = POLLIN; // only listens for new connections on tcp
 
     } else {
-      
+
       remote_simulator_addr_.sin_addr.s_addr = mavlink_addr_;
       remote_simulator_addr_.sin_port = htons(mavlink_udp_port_);
       local_simulator_addr_.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -188,8 +188,8 @@ void MavlinkInterface::Load()
       fds_[CONNECTION_FD].fd = simulator_socket_fd_;
       fds_[CONNECTION_FD].events = POLLIN;
     }
-  // hil_data_.resize(1);
   }
+  // hil_data_.resize(1);
 }
 
 void MavlinkInterface::SendSensorMessages(uint64_t time_usec) {
@@ -610,8 +610,6 @@ void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message, bo
             }
           }
         }
-      } else {
-        std::cout << "Sent odometry over udp" << std::endl;
       }
     }
   }
