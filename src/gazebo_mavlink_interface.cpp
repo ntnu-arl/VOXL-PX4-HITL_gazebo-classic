@@ -537,6 +537,11 @@ void GazeboMavlinkInterface::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf
     send_odometry_ = _sdf->GetElement("send_odometry")->Get<bool>();
   }
 
+  if(_sdf->HasElement("udp_odometry"))
+  {
+    udp_odometry_ = _sdf->GetElement("udp_odometry")->Get<bool>();
+  }
+
   mavlink_status_t* chan_state = mavlink_get_channel_status(MAVLINK_COMM_0);
 
   // set the Mavlink protocol version to use on the link
@@ -1101,7 +1106,7 @@ void GazeboMavlinkInterface::VisionCallback(OdomPtr& odom_message) {
     }
     
     mavlink_msg_odometry_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &odom);
-    mavlink_interface_->send_mavlink_message(&msg, true);
+    mavlink_interface_->send_mavlink_message(&msg, udp_odometry_);
   }
   else if (send_vision_estimation_) {
     // send VISION_POSITION_ESTIMATE Mavlink msg
