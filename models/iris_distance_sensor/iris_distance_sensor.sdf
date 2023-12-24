@@ -1,7 +1,7 @@
 <sdf version='1.6'>
-  <model name='iris_obs_avoid'>
+  <model name='iris_distance_sensor'>
     <include>
-      <uri>model://iris</uri>
+      <uri>model://iris_hitl</uri>
     </include>
 
     <!-- Only difference to regular iris is this sensor and a MAVLink stream -->
