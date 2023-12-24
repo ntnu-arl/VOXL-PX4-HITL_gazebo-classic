@@ -544,7 +544,7 @@ void GazeboMavlinkInterface::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf
 
   if(_sdf->HasElement("udp_distance"))
   {
-    udp_distance_ = _sdf->GetElementr("udp_distance")->Get<bool>();
+    udp_distance_ = _sdf->GetElement("udp_distance")->Get<bool>();
   }
 
   mavlink_status_t* chan_state = mavlink_get_channel_status(MAVLINK_COMM_0);
