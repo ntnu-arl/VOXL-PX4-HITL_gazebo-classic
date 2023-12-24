@@ -542,6 +542,11 @@ void GazeboMavlinkInterface::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf
     udp_odometry_ = _sdf->GetElement("udp_odometry")->Get<bool>();
   }
 
+  if(_sdf->HasElement("udp_distance"))
+  {
+    udp_distance_ = _sdf->GetElementr("udp_distance")->Get<bool>();
+  }
+
   mavlink_status_t* chan_state = mavlink_get_channel_status(MAVLINK_COMM_0);
 
   // set the Mavlink protocol version to use on the link
@@ -872,7 +877,7 @@ void GazeboMavlinkInterface::LidarCallback(LidarPtr& lidar_message, const int& i
 
   mavlink_message_t msg;
   mavlink_msg_distance_sensor_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &sensor_msg);
-  mavlink_interface_->send_mavlink_message(&msg);
+  mavlink_interface_->send_mavlink_message(&msg, udp_distance_);
 }
 
 void GazeboMavlinkInterface::OpticalFlowCallback(OpticalFlowPtr& opticalFlow_message) {

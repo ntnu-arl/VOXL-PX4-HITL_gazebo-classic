@@ -167,6 +167,7 @@ private:
   bool send_vision_estimation_{false};
   bool send_odometry_{false};
   bool udp_odometry_{false};
+  bool udp_distance_{false};
 
   std::vector<physics::JointPtr> joints_;
   std::vector<common::PID> pids_;

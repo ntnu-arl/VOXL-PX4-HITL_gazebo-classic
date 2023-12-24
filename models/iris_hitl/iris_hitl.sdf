@@ -503,6 +503,7 @@
       <send_vision_estimation>0</send_vision_estimation>
       <send_odometry>1</send_odometry>
       <udp_odometry>0</udp_odometry>
+      <udp_distance>0</udp_distance>
       <enable_lockstep>0</enable_lockstep>
       <use_tcp>0</use_tcp>
       <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
