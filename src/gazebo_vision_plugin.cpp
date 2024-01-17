@@ -110,6 +110,8 @@ void VisionPlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
   _pose_model_start = ignitionFromGazeboMath(_model->GetWorldPose());
 #endif
 
+  std::cout << "[gazebo_vision_plugin] has start yaw of " << _pose_model_start.Rot().Yaw() << "\n";
+
   _nh = transport::NodePtr(new transport::Node());
   _nh->Init(_namespace);
 
@@ -141,13 +143,17 @@ void VisionPlugin::OnUpdate(const common::UpdateInfo&)
     ignition::math::Vector3d velocity_model_world = ignitionFromGazeboMath(_model->GetWorldLinearVel());
     ignition::math::Vector3d angular_velocity_model = ignitionFromGazeboMath(_model->GetRelativeAngularVel());
 #endif
+
+    std::cout << "[gazebo_vision_plugin] Current yaw is " << pose_model_world.Rot().Yaw() << "\n";
+
     ignition::math::Pose3d pose_model; // pose in local frame (relative to where it started)
     pose_model.Pos().X() = pose_model_world.Pos().X() - _pose_model_start.Pos().X();
     pose_model.Pos().Y() = pose_model_world.Pos().Y() - _pose_model_start.Pos().Y();
     pose_model.Pos().Z() = pose_model_world.Pos().Z() - _pose_model_start.Pos().Z();
     pose_model.Rot().Euler(pose_model_world.Rot().Roll(),
                            pose_model_world.Rot().Pitch(),
-                           pose_model_world.Rot().Yaw() - _pose_model_start.Rot().Yaw());
+                           pose_model_world.Rot().Yaw());
+//                           pose_model_world.Rot().Yaw() - _pose_model_start.Rot().Yaw());
 
     // update noise parameters
     ignition::math::Vector3d noise_pos;
