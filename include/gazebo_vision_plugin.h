@@ -91,6 +91,8 @@ private:
   double _random_walk;
   double _noise_density;
 
+  double _yaw_correction;
+
   ignition::math::Vector3d _bias;
 
   std::default_random_engine _rand;
