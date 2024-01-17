@@ -116,7 +116,7 @@ void VisionPlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
   // on VOXL2 is in NED and it starts at 0. So find out how far off from North the
   // start pose is from due north and use this as a correction factor when publishing odometry
   double start_pose_yaw = _pose_model_start.Rot().Yaw();
-  _yaw_correction = 1.57 + start_pose_yaw;
+  _yaw_correction = 1.57 - start_pose_yaw;
 
   _nh = transport::NodePtr(new transport::Node());
   _nh->Init(_namespace);
@@ -160,7 +160,7 @@ void VisionPlugin::OnUpdate(const common::UpdateInfo&)
     pose_model.Pos().Z() = pose_model_world.Pos().Z() - _pose_model_start.Pos().Z();
     pose_model.Rot().Euler(pose_model_world.Rot().Roll(),
                            pose_model_world.Rot().Pitch(),
-                           pose_model_world.Rot().Yaw() - _yaw_correction);
+                           pose_model_world.Rot().Yaw() + _yaw_correction);
 
     // update noise parameters
     ignition::math::Vector3d noise_pos;
