@@ -7,6 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     g++ \
     make \
     cmake \
+    vim \
     git \
     libboost-all-dev \
     lsb-release \
