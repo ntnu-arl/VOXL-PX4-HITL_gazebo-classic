@@ -37,13 +37,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
 
 WORKDIR /usr/workspace
 
-# This will update if there have been any updates to the voxl-dev branch and force a new git clone
-ADD https://api.github.com/repos/modalai/PX4-SITL_gazebo-classic/git/refs/heads/voxl-dev version.json
+# This will update if there have been any updates to the eric-vio-yaw-fix branch and force a new git clone
+ADD https://api.github.com/repos/modalai/PX4-SITL_gazebo-classic/git/refs/heads/eric-vio-yaw-fix version.json
 
 RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
-RUN git checkout voxl-dev
+RUN git checkout eric-vio-yaw-fix
 RUN git submodule update --init --recursive
 
 RUN python3 -m pip install -r mavlink/pymavlink/requirements.txt
