@@ -144,7 +144,7 @@ void VisionPlugin::OnUpdate(const common::UpdateInfo&)
     ignition::math::Vector3d angular_velocity_model = ignitionFromGazeboMath(_model->GetRelativeAngularVel());
 #endif
 
-    std::cout << "[gazebo_vision_plugin] Current yaw is " << pose_model_world.Rot().Yaw() << "\n";
+    // std::cout << "[gazebo_vision_plugin] Current yaw is " << pose_model_world.Rot().Yaw() << "\n";
 
     ignition::math::Pose3d pose_model; // pose in local frame (relative to where it started)
     pose_model.Pos().X() = pose_model_world.Pos().X() - _pose_model_start.Pos().X();
