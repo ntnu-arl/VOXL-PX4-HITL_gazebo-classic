@@ -418,7 +418,7 @@ set(plugins
 foreach(plugin ${plugins})
   target_link_libraries(${plugin} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} ${TinyXML_LIBRARIES})
 endforeach()
-target_link_libraries(gazebo_opticalflow_plugin ${OpticalFlow_LIBS})
+# target_link_libraries(gazebo_opticalflow_plugin ${OpticalFlow_LIBS})
 
 # If BUILD_ROS2_PLUGINS set to ON, build plugins that have ROS dependencies
 # Current plugins that can be used with ROS interface: gazebo_motor_failure_plugin
