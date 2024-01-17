@@ -18,15 +18,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gnupg2 \
     ninja-build
 
-WORKDIR /usr/workspace
-
-RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
-
-WORKDIR /usr/workspace/voxl2_hitl_gazebo
-RUN git checkout voxl-dev
-RUN git submodule update --init --recursive
-
-RUN python3 -m pip install -r mavlink/pymavlink/requirements.txt
 RUN pip3 install Jinja2
 RUN pip3 install numpy
 
@@ -43,6 +34,20 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y --quiet --no-install-recommends in
     gazebo11 \
     libgazebo11-dev
 
+WORKDIR /usr/workspace
+
+# This will update if there have been any updates to the voxl-dev branch and force a new git clone
+ADD https://api.github.com/repos/modalai/PX4-SITL_gazebo-classic/git/refs/heads/voxl-dev version.json
+
+RUN git clone https://github.com/modalai/PX4-SITL_gazebo-classic.git voxl2_hitl_gazebo
+
+WORKDIR /usr/workspace/voxl2_hitl_gazebo
+RUN git checkout voxl-dev
+RUN git submodule update --init --recursive
+
+RUN python3 -m pip install -r mavlink/pymavlink/requirements.txt
+
+
 RUN mkdir -p mavlink-libs
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo/mavlink
@@ -51,7 +56,7 @@ RUN python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=../m
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo/build
 RUN cmake ..
-RUN make
+RUN make -j2
 RUN make install
 
 WORKDIR /usr/workspace/voxl2_hitl_gazebo
