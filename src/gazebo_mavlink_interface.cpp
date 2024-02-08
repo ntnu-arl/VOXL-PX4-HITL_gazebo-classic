@@ -20,6 +20,9 @@
  */
 
 #include <gazebo_mavlink_interface.h>
+
+using namespace std;
+
 namespace gazebo {
 GZ_REGISTER_MODEL_PLUGIN(GazeboMavlinkInterface);
 
@@ -894,6 +897,20 @@ void GazeboMavlinkInterface::OpticalFlowCallback(OpticalFlowPtr& opticalFlow_mes
   sensor_msg.quality = opticalFlow_message->quality();
   sensor_msg.time_delta_distance_us = opticalFlow_message->time_delta_distance_us();
   sensor_msg.distance = optflow_distance_;
+
+  // cout << "Sending Mavlink HIL optical flow message with quality " << (int) sensor_msg.quality << endl;
+  // cout << "\t" << sensor_msg.time_usec << endl; /*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.*/
+  // cout << "\t" << sensor_msg.integration_time_us << endl; /*< [us] Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.*/
+  // cout << "\t" << sensor_msg.integrated_x << endl; /*< [rad] Flow in radians around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)*/
+  // cout << "\t" << sensor_msg.integrated_y << endl; /*< [rad] Flow in radians around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.)*/
+  // cout << "\t" << sensor_msg.integrated_xgyro << endl; /*< [rad] RH rotation around X axis*/
+  // cout << "\t" << sensor_msg.integrated_ygyro << endl; /*< [rad] RH rotation around Y axis*/
+  // cout << "\t" << sensor_msg.integrated_zgyro << endl; /*< [rad] RH rotation around Z axis*/
+  // cout << "\t" << sensor_msg.time_delta_distance_us << endl; /*< [us] Time since the distance was sampled.*/
+  // cout << "\t" << sensor_msg.distance << endl; /*< [m] Distance to the center of the flow field. Positive value (including zero): distance known. Negative value: Unknown distance.*/
+  // cout << "\t" << sensor_msg.temperature << endl; /*< [cdegC] Temperature*/
+  // cout << "\t" << (int) sensor_msg.sensor_id << endl; /*<  Sensor ID*/
+  // cout << "\t" << (int) sensor_msg.quality << endl;
 
   mavlink_message_t msg;
   mavlink_msg_hil_optical_flow_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &sensor_msg);

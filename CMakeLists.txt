@@ -361,14 +361,12 @@ add_library(gazebo_barometer_plugin SHARED src/gazebo_barometer_plugin.cpp)
 add_library(gazebo_mavlink_interface SHARED src/gazebo_mavlink_interface.cpp src/mavlink_interface.cpp)
 add_library(gazebo_imu_plugin SHARED src/gazebo_imu_plugin.cpp)
 add_library(gazebo_vision_plugin SHARED src/gazebo_vision_plugin.cpp)
+add_library(gazebo_lidar_plugin SHARED src/gazebo_lidar_plugin.cpp)
+add_library(gazebo_opticalflow_mockup_plugin SHARED src/gazebo_opticalflow_mockup_plugin.cpp)
 
 # add_library(gazebo_airspeed_plugin SHARED src/gazebo_airspeed_plugin.cpp)
-# add_library(gazebo_camera_manager_plugin SHARED src/gazebo_camera_manager_plugin.cpp)
 # add_library(gazebo_irlock_plugin SHARED src/gazebo_irlock_plugin.cpp)
 # add_library(gazebo_random_velocity_plugin SHARED src/gazebo_random_velocity_plugin.cpp)
-# add_library(gazebo_lidar_plugin SHARED src/gazebo_lidar_plugin.cpp)
-# add_library(gazebo_opticalflow_mockup_plugin SHARED src/gazebo_opticalflow_mockup_plugin.cpp)
-# add_library(gazebo_opticalflow_plugin SHARED src/gazebo_opticalflow_plugin.cpp)
 # add_library(gazebo_aruco_plugin SHARED src/gazebo_aruco_plugin.cpp)
 # add_library(gazebo_sonar_plugin SHARED src/gazebo_sonar_plugin.cpp)
 # add_library(gazebo_uuv_plugin SHARED src/gazebo_uuv_plugin.cpp)
@@ -381,6 +379,8 @@ add_library(gazebo_vision_plugin SHARED src/gazebo_vision_plugin.cpp)
 # add_library(gazebo_pose_sniffer_plugin SHARED src/gazebo_pose_sniffer_plugin.cpp)
 # add_library(gazebo_airship_dynamics_plugin SHARED src/gazebo_airship_dynamics_plugin.cpp)
 # add_library(gazebo_drop_plugin SHARED src/gazebo_drop_plugin.cpp)
+# add_library(gazebo_camera_manager_plugin SHARED src/gazebo_camera_manager_plugin.cpp)
+# add_library(gazebo_opticalflow_plugin SHARED src/gazebo_opticalflow_plugin.cpp)
 
 set(plugins
   gazebo_multirotor_base_plugin
@@ -391,21 +391,21 @@ set(plugins
   gazebo_barometer_plugin
   gazebo_mavlink_interface
   gazebo_imu_plugin
+  gazebo_lidar_plugin
+  gazebo_opticalflow_mockup_plugin
   gazebo_vision_plugin
   )
 #set(plugins
 #  gazebo_airspeed_plugin
-#  gazebo_camera_manager_plugin
 #  gazebo_irlock_plugin
 #  gazebo_random_velocity_plugin
-#  gazebo_lidar_plugin
-#  gazebo_opticalflow_mockup_plugin
-#  gazebo_opticalflow_plugin
 #  gazebo_aruco_plugin
 #  gazebo_sonar_plugin
 #  gazebo_uuv_plugin
 #  gazebo_controller_interface
 #  gazebo_gimbal_controller_plugin
+#  gazebo_opticalflow_plugin
+#  gazebo_camera_manager_plugin
 #  gazebo_wind_plugin
 #  gazebo_catapult_plugin
 #  gazebo_usv_dynamics_plugin

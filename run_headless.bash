@@ -12,4 +12,5 @@ echo -e "GAZEBO_PLUGIN_PATH $GAZEBO_PLUGIN_PATH"
 echo -e "GAZEBO_MODEL_PATH $GAZEBO_MODEL_PATH"
 echo -e "LD_LIBRARY_PATH $LD_LIBRARY_PATH"
 
-gzserver worlds/hitl_iris_vio.world -s libgazebo_ros_init.so -s libgazebo_ros_factory.so
+# gzserver worlds/hitl_iris_vio.world -s libgazebo_ros_init.so -s libgazebo_ros_factory.so
+gzserver worlds/modalai.world -s libgazebo_ros_init.so -s libgazebo_ros_factory.so

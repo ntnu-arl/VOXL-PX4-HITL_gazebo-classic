@@ -7,5 +7,5 @@ rm -fR build
 mkdir build
 cd build
 cmake ..
-make
+make -j 2
 cd ..
