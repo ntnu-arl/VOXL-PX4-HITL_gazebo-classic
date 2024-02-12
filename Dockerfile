@@ -60,7 +60,7 @@ RUN cmake ..
 RUN make -j2
 RUN make install
 
-WORKDIR /usr/workspace/voxl2_hitl_gazebo
+WORKDIR /usr/workspace
 
 
 
