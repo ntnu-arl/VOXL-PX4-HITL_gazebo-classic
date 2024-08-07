@@ -86,7 +86,7 @@ void MavlinkInterface::Load()
     });
     open_serial();
 
-  } else {
+  // } else {
     memset((char *)&remote_simulator_addr_, 0, sizeof(remote_simulator_addr_));
     remote_simulator_addr_.sin_family = AF_INET;
     remote_simulator_addr_len_ = sizeof(remote_simulator_addr_);
@@ -162,7 +162,8 @@ void MavlinkInterface::Load()
       fds_[LISTEN_FD].events = POLLIN; // only listens for new connections on tcp
 
     } else {
-      if (!hil_mode_) {
+      // if (!hil_mode_) {
+      if (true) {
         // When connecting to SITL, we specify the port where the mavlink traffic originates from.
         remote_simulator_addr_.sin_addr.s_addr = mavlink_addr_;
         remote_simulator_addr_.sin_port = htons(mavlink_udp_port_);
@@ -427,9 +428,9 @@ void MavlinkInterface::pollForMAVLinkMessages()
         mavlink_status_t status;
         for (unsigned i = 0; i < len; ++i) {
           if (mavlink_parse_char(MAVLINK_COMM_0, buf_[i], &msg, &status)) {
-            if (hil_mode_ && serial_enabled_) {
-              send_mavlink_message(&msg);
-            }
+            // if (hil_mode_ && serial_enabled_) {
+            //   send_mavlink_message(&msg);
+            // }
             handle_message(&msg);
           }
         }
@@ -600,7 +601,9 @@ void MavlinkInterface::send_mavlink_message(const mavlink_message_t *message)
     }
     io_service_.post(std::bind(&MavlinkInterface::do_serial_write, this, true));
 
-  } else {
+  }
+
+  if (true) {
     uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
     int packetlen = mavlink_msg_to_send_buffer(buffer, message);
 
