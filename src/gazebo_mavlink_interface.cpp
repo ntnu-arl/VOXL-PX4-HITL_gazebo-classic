@@ -1117,6 +1117,16 @@ void GazeboMavlinkInterface::VisionCallback(OdomPtr& odom_message) {
       }
     }
 
+    // static uint64_t previous_odometry_time = 0;
+    // struct timespec ts;
+    // clock_gettime(CLOCK_MONOTONIC, &ts);
+    // uint64_t result = (uint64_t)(ts.tv_sec) * 1000000;
+    // result += (uint64_t)(ts.tv_nsec / 1000);
+    // if (previous_odometry_time) {
+    //         std::cout << "Visual odometry elapsed time: " << result - previous_odometry_time << std::endl;
+    // }
+    // previous_odometry_time = result;
+
     mavlink_msg_odometry_encode_chan(1, 200, MAVLINK_COMM_0, &msg, &odom);
     mavlink_interface_->send_mavlink_message(&msg);
   }
