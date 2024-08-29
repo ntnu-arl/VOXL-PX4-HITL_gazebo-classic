@@ -1214,14 +1214,30 @@ void GazeboMavlinkInterface::handle_actuator_controls() {
   if (actuator_controls.size() < n_out_max) return; //TODO: Handle this properly
   for (int i = 0; i < input_reference_.size(); i++) {
     if (armed) {
-      input_reference_[i] = (actuator_controls[input_index_[i]] + input_offset_[i])
-          * input_scaling_[i] + zero_position_armed_[i];
+      input_reference_[i] = (actuator_controls[input_index_[i]] + 0.0f*input_offset_[i])
+          * (input_scaling_[i]*0.0f + 720) + zero_position_armed_[i]+0.0f;
       // std::cout << input_reference_ << ", ";
     } else {
       input_reference_[i] = zero_position_disarmed_[i];
       // std::cout << input_reference_ << ", ";
     }
   }
+
+  std::cout << "actuator controls" << " " << actuator_controls[input_index_[0]]  <<" " << actuator_controls[input_index_[1]]  
+    << " " << actuator_controls[input_index_[2]]  << " " << actuator_controls[input_index_[3]]  << std::endl;
+
+  std::cout << "input reference" << " " << input_reference_[0]  <<" " << input_reference_[1]  
+    << " " << input_reference_[2]  << " " << input_reference_[3]  << std::endl;
+
+  std::cout << "input offset" << " " << input_offset_[0]  <<" " << input_offset_[1]  
+    << " " << input_offset_[2]  << " " << input_offset_[3]  << std::endl;
+  
+  std::cout << "input scaling" << " " << input_scaling_[0]  <<" " << input_scaling_[1]  
+    << " " << input_scaling_[2]  << " " << input_scaling_[3]  << std::endl;
+
+  std::cout << "zero position armed" << " " << zero_position_armed_[0]  <<" " << zero_position_armed_[1]
+    << " " << zero_position_armed_[2]  << " " << zero_position_armed_[3]  << std::endl;
+
   // std::cout << "Input Reference: " << input_reference_.transpose() << std::endl;
   received_first_actuator_ = mavlink_interface_->GetReceivedFirstActuator();
 }

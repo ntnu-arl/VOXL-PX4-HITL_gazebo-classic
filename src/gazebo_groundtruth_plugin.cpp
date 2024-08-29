@@ -149,7 +149,15 @@ void GroundtruthPlugin::OnUpdate(const common::UpdateInfo&)
 
   ignition::math::Vector3d velocity_current_W_xy = velocity_current_W;
   velocity_current_W_xy.Z() = 0;
-
+  
+  std::cout << "position: " << pos_W_I.X() <<" " << pos_W_I.Y() <<" " << pos_W_I.Z() << std::endl;
+  std::cout << "attitude: " << att_W_I.X() <<" " << att_W_I.Y() <<" " << att_W_I.Z() <<" " << att_W_I.W() << std::endl;
+  std::cout << "velocity: " << velocity_current_W.X() <<" " << velocity_current_W.Y() <<" " << velocity_current_W.Z() << std::endl;
+  std::cout << "attitude euler: " << att_W_I.Euler().X() <<" " << att_W_I.Euler().Y() <<" " << att_W_I.Euler().Z() << std::endl;
+  ignition::math::Matrix3d R_W_I(att_W_I);
+  std::cout << "attitude matrix: " << R_W_I(0,0) << " " << R_W_I(0,1) << " " << R_W_I(0,2)
+                                   << " " << R_W_I(1,0) << " " << R_W_I(1,1) << " " << R_W_I(1,2) 
+                                   << " " << R_W_I(2,0) << " " << R_W_I(2,1) << " " << R_W_I(2,2) << std::endl;
   // fill Groundtruth msg
   sensor_msgs::msgs::Groundtruth groundtruth_msg;
 

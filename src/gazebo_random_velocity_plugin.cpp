@@ -166,9 +166,14 @@ void RandomVelocityPlugin::Update(const common::UpdateInfo &_info)
       _idx = 0;
     }
 
+    std::cout << "Velocity: " << this->dataPtr->velocity << std::endl;
+
     // Apply scaling factor
     this->dataPtr->velocity.Normalize();
     this->dataPtr->velocity *= this->dataPtr->velocityFactor;
+
+    std::cout << "Velocity perturbed: " << this->dataPtr->velocity << std::endl;
+
 
     // Clamp X value
     this->dataPtr->velocity.X(ignition::math::clamp(this->dataPtr->velocity.X(),

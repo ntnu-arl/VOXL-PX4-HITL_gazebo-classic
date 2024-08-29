@@ -541,6 +541,7 @@ void MavlinkInterface::handle_actuator_controls(mavlink_message_t *msg)
   // set rotor speeds, controller targets
   input_reference_.resize(n_out_max);
   for (int i = 0; i < input_reference_.size(); i++) {
+    //std::cout << "mavlink controls: " << controls.controls[i] << std::endl;
     input_reference_[i] = controls.controls[i];
   }
 

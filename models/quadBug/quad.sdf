@@ -1,0 +1,454 @@
+<sdf version='1.10'>
+  <model name='quadrotor'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.22500000000000001</mass>
+        <inertia>
+          <ixx>0.00042250000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00042250000000000002</iyy>
+          <iyz>0</iyz>
+          <izz>0.00084499999999999994</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.1838477631085024</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.050000000000000003</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_arm_motor_0' type='fixed'>
+      <pose relative_to='base_link'>0.065000000000000002 -0.065000000000000002 0 -1.570796326794897 1.1102230246251565e-16 -2.3561944901923448</pose>
+      <parent>base_link</parent>
+      <child>arm_motor_0</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='arm_motor_0'>
+      <pose relative_to='base_link_to_arm_motor_0'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>9.9999999999999998e-13</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='arm_motor_0_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1838477631085024</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>1 0.528750002 0.0490196086 1</diffuse>
+          <ambient>1 0.528750002 0.0490196086 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_arm_motor_1' type='fixed'>
+      <pose relative_to='base_link'>-0.065000000000000002 -0.065000000000000002 0 1.570796326794897 1.6653345369377348e-16 -0.78539816339744828</pose>
+      <parent>base_link</parent>
+      <child>arm_motor_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='arm_motor_1'>
+      <pose relative_to='base_link_to_arm_motor_1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>9.9999999999999998e-13</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='arm_motor_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1838477631085024</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>1 0.528750002 0.0490196086 1</diffuse>
+          <ambient>1 0.528750002 0.0490196086 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_arm_motor_2' type='fixed'>
+      <pose relative_to='base_link'>-0.065000000000000002 0.065000000000000002 0 1.5707963267948972 5.5511151231257827e-17 -2.3561944901923448</pose>
+      <parent>base_link</parent>
+      <child>arm_motor_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='arm_motor_2'>
+      <pose relative_to='base_link_to_arm_motor_2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>9.9999999999999998e-13</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='arm_motor_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1838477631085024</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>1 0.528750002 0.0490196086 1</diffuse>
+          <ambient>1 0.528750002 0.0490196086 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_arm_motor_3' type='fixed'>
+      <pose relative_to='base_link'>0.065000000000000002 0.065000000000000002 0 -1.570796326794897 -5.5511151231257827e-17 -0.78539816339744839</pose>
+      <parent>base_link</parent>
+      <child>arm_motor_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='arm_motor_3'>
+      <pose relative_to='base_link_to_arm_motor_3'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>9.9999999999999998e-13</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='arm_motor_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1838477631085024</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>1 0.528750002 0.0490196086 1</diffuse>
+          <ambient>1 0.528750002 0.0490196086 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_motor_0' type='revolute'>
+      <pose relative_to='base_link'>0.13 -0.13 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>motor_0</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='motor_0'>
+      <pose relative_to='base_link_to_motor_0'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0062499999999999986</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_0_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.050000000000000003</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>0.75000006 0 0.5 1</diffuse>
+          <ambient>0.75000006 0 0.5 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_motor_1' type='revolute'>
+      <pose relative_to='base_link'>-0.13 -0.13 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>motor_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='motor_1'>
+      <pose relative_to='base_link_to_motor_1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0062499999999999986</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.050000000000000003</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>0.75000006 0 0.5 1</diffuse>
+          <ambient>0.75000006 0 0.5 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_motor_2' type='revolute'>
+      <pose relative_to='base_link'>-0.13 0.13 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>motor_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='motor_2'>
+      <pose relative_to='base_link_to_motor_2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0062499999999999986</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.050000000000000003</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>0.75000006 0 0.5 1</diffuse>
+          <ambient>0.75000006 0 0.5 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_to_motor_3' type='revolute'>
+      <pose relative_to='base_link'>0.13 0.13 0 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>motor_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.20000000000000001</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='motor_3'>
+      <pose relative_to='base_link_to_motor_3'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.0062499999999999986</mass>
+        <inertia>
+          <ixx>1e-13</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-13</iyy>
+          <iyz>0</iyz>
+          <izz>1e-13</izz>
+        </inertia>
+      </inertial>
+      <visual name='motor_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.050000000000000003</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>0.75000006 0 0.5 1</diffuse>
+          <ambient>0.75000006 0 0.5 1</ambient>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

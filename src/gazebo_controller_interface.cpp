@@ -76,6 +76,7 @@ void GazeboControllerInterface::OnUpdate(const common::UpdateInfo& /*_info*/) {
 
   for (int i = 0; i < input_reference_.size(); i++)
   turning_velocities_msg.add_motor_speed(input_reference_[i]);
+  std::cout << "Motor speeds: " << input_reference_[i] << std::endl;
   // Add header timestamp etc
 
   motor_velocity_reference_pub_->Publish(turning_velocities_msg);

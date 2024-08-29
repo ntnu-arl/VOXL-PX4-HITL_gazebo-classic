@@ -9,7 +9,7 @@
     </plugin>
 
     <include>
-      <uri>model://iris_hitl</uri>
+      <uri>model://quadBug</uri>
     </include>
 
     <plugin name="opticalflow_mockup_plugin" filename="libgazebo_opticalflow_mockup_plugin.so">
